@@ -1,0 +1,102 @@
+{
+    "name": "Огненный шар [Fireball]",
+    "type": "spell",
+    "system": {
+        "description": {
+            "value": "<div class=\"rd__b  rd__b--3\">\n<div class=\"rd__spc-inline-post\">Полоса яркого света исходит из вашего указательного пальца в выбранную точку в пределах дистанции, а в ней с низким гулом взрывается шаром пламени. Каждое существо в пределах сферы радиусом 20 футов с центром в этой точке должно пройти испытание Ловкости. При провале цель получает [[/r 8d6]] урона огнём, при успехе половину этого урона. Огонь распространяется и за углы. Он поджигает все горючие объекты в области действия, кроме тех, что носят или держат.</div>\n<div class=\"rd__spc-inline-post\"><strong>На высоких кругах</strong>. Если вы сотворяете это заклинание, используя ячейку 4-го круга или выше, урон увеличивается на [[/r 1d6]] за каждый круг ячейки выше 3-го.</div>\n</div>",
+            "chat": "",
+            "unidentified": ""
+        },
+        "source": "PHB",
+        "activation": {
+            "type": "action",
+            "cost": 1,
+            "condition": ""
+        },
+        "duration": {
+            "value": null,
+            "units": "inst"
+        },
+        "cover": null,
+        "target": {
+            "value": 20,
+            "width": null,
+            "units": "ft",
+            "type": "sphere"
+        },
+        "range": {
+            "value": 150,
+            "long": null,
+            "units": "ft"
+        },
+        "uses": {
+            "value": 0,
+            "max": "0",
+            "per": "",
+            "recovery": ""
+        },
+        "consume": {
+            "type": "",
+            "target": "",
+            "amount": null
+        },
+        "ability": "",
+        "actionType": "save",
+        "attackBonus": 0,
+        "chatFlavor": "",
+        "critical": {
+            "threshold": null,
+            "damage": null
+        },
+        "damage": {
+            "parts": [
+                [
+                    "8d6",
+                    "fire"
+                ]
+            ],
+            "versatile": ""
+        },
+        "formula": "",
+        "save": {
+            "ability": "dex",
+            "dc": null,
+            "scaling": "spell"
+        },
+        "level": 3,
+        "school": "evo",
+        "components": {
+            "vocal": true,
+            "somatic": true,
+            "material": true,
+            "ritual": false,
+            "concentration": false,
+            "value": ""
+        },
+        "materials": {
+            "value": "крошечный шарик из гуано летучей мыши и серы",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": false
+        },
+        "scaling": {
+            "mode": "level",
+            "formula": "1d6"
+        },
+        "details": {
+            "biography": {
+                "value": "<p>Яркий луч вылетает из вашего указательного пальца в точку, выбранную вами в пределах дистанции, где и происходит взрыв пламени с гулким рёвом.</p><p>Все существа в пределах сферы с радиусом 20 футов с центром в этой точке должны совершить спасбросок <span class=\"saving_throw\">Ловкости</span>.</p><p>Цель получает урон огнём <dice-roller formula=\"8к6\">8к6</dice-roller> при провале или половину этого урона при успехе. Этот огонь огибает углы. Он воспламеняет горючие предметы, которые никто не несёт и не носит.</p>",
+                "public": ""
+            }
+        }
+    },
+    "classes": [
+        "wizard",
+        "sorcerer",
+        "magus"
+    ]
+}

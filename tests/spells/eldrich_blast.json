@@ -1,0 +1,96 @@
+{
+    "name": "Мистический заряд [Eldritch Blast]",
+    "type": "spell",
+    "system": {
+        "description": {
+            "value": "<div class=\"rd__b  rd__b--3\">\n<p>Трескучий разряд энергии бьет в существо в пределах дистанции. Совершите дистанционную атаку заклинанием по цели. При попадании цель получает [[/r 1d10]] урона силой.</p>\n<p>Заклинание создаёт больше разрядов, когда вы достигаете высоких уровней: два разряда на 5-м уровне, три на 11-м и четыре на 17-м. Вы можете направить разряды как в одну и ту же цель, так и в разные. Совершите по отдельному броску атаки для каждого разряда.</p>\n</div>",
+            "chat": "",
+            "unidentified": ""
+        },
+        "source": "PHB",
+        "activation": {
+            "type": "action",
+            "cost": 1,
+            "condition": ""
+        },
+        "duration": {
+            "value": null,
+            "units": "inst"
+        },
+        "target": {
+            "value": 1,
+            "width": null,
+            "units": "",
+            "type": "creature"
+        },
+        "range": {
+            "value": 120,
+            "long": null,
+            "units": "ft"
+        },
+        "uses": {
+            "value": 0,
+            "max": "0",
+            "per": ""
+        },
+        "consume": {
+            "type": "",
+            "target": "",
+            "amount": null
+        },
+        "ability": "",
+        "actionType": "rsak",
+        "attackBonus": "0",
+        "chatFlavor": "",
+        "critical": {
+            "threshold": null,
+            "damage": ""
+        },
+        "damage": {
+            "parts": [
+                [
+                    "1d10",
+                    "force"
+                ]
+            ],
+            "versatile": ""
+        },
+        "formula": "",
+        "save": {
+            "ability": "",
+            "dc": null,
+            "scaling": "spell"
+        },
+        "level": 0,
+        "school": "evo",
+        "components": {
+            "value": "",
+            "vocal": true,
+            "somatic": true,
+            "material": false,
+            "ritual": false,
+            "concentration": false
+        },
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "always",
+            "prepared": true
+        },
+        "scaling": {
+            "mode": "none",
+            "formula": ""
+        }
+    },
+    "permission": {
+        "default": 0,
+        "Zs7yJru4DCapi5DP": 3
+    },
+    "classes": [
+        "warlock"
+    ]
+}
