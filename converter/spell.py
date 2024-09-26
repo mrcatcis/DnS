@@ -56,11 +56,11 @@ class Spell:
         self.source = system['source']
         self.activation = Activation(**system['activation'])
         self.duration = Duration(**system['duration'])
-        self.range = system['range']['value']
+        self.range = int(system['range']['value'])
         self.action_type = system['actionType']
         self.attack_bonus = system['attackBonus']
         self.save_throw = SaveThrow(**system['save'])
-        self.level = system['level']
+        self.level = int(system['level'])
         self.school = system['school']
         self.components = Components(**system['components'])
         self.materials = Materials(**system['materials'])
