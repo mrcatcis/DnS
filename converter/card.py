@@ -1,3 +1,4 @@
+import os
 from pptx import Presentation
 from pptx.util import Inches, Pt, Cm
 from pptx.enum.text import MSO_AUTO_SIZE, MSO_ANCHOR
@@ -6,6 +7,9 @@ from pptx.slide import Slide
 from pptx.shapes.shapetree import Shape
 from pptx.dml.color import RGBColor
 from converter.spell import Spell
+from io import BytesIO
+from functools import cached_property
+
 
 class Card:
     WIDTH = Cm(6.365) 
@@ -25,6 +29,11 @@ class Card:
         self.top = top
         self.spell = spell
     
+
+    @cached_property
+    def font(self) -> str:
+        return os.path.join(os.getcwd(), 'fonts/OpenSans-Regular.ttf')
+
     
     def add_to_slide(self, slide: Slide) -> None:
         self.add_border(slide)
@@ -56,11 +65,11 @@ class Card:
         title.line.width = Cm(0.05)
         title_tf = title.text_frame
         title_tf.text = f'{self.spell.name.split("[")[0].strip()}    {self.spell.level}'
-        title_tf.fit_text(font_file='/usr/share/fonts/truetype/noto/NotoSerifMalayalam-Bold.ttf')
-        # title_tf.fit_text()
+
+        title_tf.fit_text(font_file=self.font)
+
         title_tf.vertical_anchor = MSO_ANCHOR.MIDDLE
-        # title_tf.auto_size=MSO_AUTO_SIZE.SHAPE_TO_FIT_TEXT
-        # title_tf.word_wrap=True
+
         return title
 
     def add_body(self, slide: Slide) -> Shape:
@@ -82,7 +91,8 @@ class Card:
         text += f'Distance: {self.spell.range}\v'
         text += self.spell.description
         body_tf.text = text
-
-        body_tf.fit_text(max_size=8 ,font_file='/usr/share/fonts/truetype/noto/NotoSerifMalayalam-Bold.ttf')
-
+        body_tf.auto_size = MSO_AUTO_SIZE.TEXT_TO_FIT_SHAPE
+        body_tf.word_wrap = True
+        # fit_text ещё не работает корректно
+        body_tf.fit_text(max_size=4, font_family = 'Open Sans', font_file=self.font)
         return body

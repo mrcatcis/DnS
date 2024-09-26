@@ -2,6 +2,7 @@ import json
 from dataclasses import dataclass
 from enum import StrEnum
 from typing import Any
+from bs4 import BeautifulSoup
 
 @dataclass
 class Activation:
@@ -53,6 +54,8 @@ class Spell:
         self.classes = spell_json['classes']
         system = spell_json['system']
         self.description = self._convert_description(system['description']['value'])
+        # self.description = self._convert_description(system['details']['biography']['value'])
+
         self.source = system['source']
         self.activation = Activation(**system['activation'])
         self.duration = Duration(**system['duration'])
@@ -67,4 +70,6 @@ class Spell:
 
     
     def _convert_description(self, description: str):
+        soup = BeautifulSoup(description, 'html.parser')
+        print(soup.prettify())
         return description

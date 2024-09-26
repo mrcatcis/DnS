@@ -1,0 +1,1 @@
+# curl -X POST https://ttg.club/api/v1/spells/fireball
