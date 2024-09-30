@@ -1,12 +1,13 @@
 import requests
 import json
+import time
 
 from typing import Any
 from pathlib import Path
 
 class TTGCachedClient:
-    def __init__(self) -> None:
-        self.cache_dir = Path('./.cache/spells/ttg_api/')
+    def __init__(self, cache_path: Path) -> None:
+        self.cache_dir = Path(cache_path / '.cache/spells/ttg_api/')
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.session = requests.Session()
 
@@ -26,6 +27,6 @@ class TTGCachedClient:
     def download_spell(self, name: str) -> str:
         r = self.session.post(f'https://ttg.club/api/v1/spells/{name}')
         r.raise_for_status()
+        time.sleep(0.2)
         return r.text
     
-ttg_client = TTGCachedClient()

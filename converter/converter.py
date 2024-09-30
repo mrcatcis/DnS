@@ -5,16 +5,18 @@ from pptx.enum.text import MSO_AUTO_SIZE
 
 from converter.card import Card
 from converter.spell import BaseSpell, TTGSpell, LssSpell
-from converter.client import ttg_client
+from converter.client import TTGCachedClient
 from itertools import batched
 
 
 class Converter:
-    def __init__(self, spell_config_path: Path, spell_class: type[BaseSpell]) -> None:
+    def __init__(self, spell_config_path: Path, spell_class: type[BaseSpell], cache_path: Path) -> None:
+        self.ttg_client = TTGCachedClient(cache_path)
+
         self.spells = []
         self.spell_class = spell_class
         with open(spell_config_path, encoding='utf-8') as f:
-            for batch in batched(f.readlines(), 9):
+            for batch in batched(filter(lambda x: not x.startswith('#'), f.readlines()), 9):
                 spell_on_slide = []
                 for spell in batch:
                     if spell.startswith('http'):
@@ -42,7 +44,7 @@ class Converter:
                     if index >= len(spell_on_slide):
                         break
                     spell_name = spell_on_slide[index]
-                    spell = TTGSpell(ttg_client.get_spell(spell_name))
+                    spell = TTGSpell(self.ttg_client.get_spell(spell_name))
                     card = Card(
                         left_position + col * (Card.WIDTH + GAP),
                         top_position + row * (Card.HEIGHT + GAP),

@@ -102,6 +102,21 @@ class TTGSpell(BaseSpell):
         description = description.replace('</blockquote>', '\v')        
         description = description.replace('<ul>', '')
         description = description.replace('</ul>', '\v')        
+        description = description.replace('&nbsp;', '')        
+        description = description.replace('&laquo;', '"')        
+        description = description.replace('&raquo;', '"')        
+
+        description = re.sub(
+            r'<detail-tooltip type=".+?"><a href=".+?">(.+?)</a></detail-tooltip>',
+            r'\1',
+            description,
+        )
+
+        description = re.sub(
+            r'<a href=".+?">(.+?)</a>',
+            r'\1',
+            description,
+        )
 
         description = re.sub(
             r'<li>(.+?)</li>',
@@ -129,11 +144,17 @@ class TTGSpell(BaseSpell):
         )
 
         description = re.sub(
-            r'<dice-roller formula="(\d*к\d+)+"( label="[а-яА-ЯёЁ\s]+")?>(\d*к\d+|[\d%]+)</dice-roller>',
-            r'\3',
+            r'<dice-roller formula=".+?"( label=".+?")?>(.+?)</dice-roller>',
+            r'\2',
             description,
         )
 
+        description = re.sub(
+            r'<span .+?=".+?">(.+?)</span>',
+            '\n\\1\n',
+            description,
+        )
+        
         description = re.sub(
             r'(\d*к\d+)+',
             '\n#3333ff\\1\n',
@@ -141,17 +162,17 @@ class TTGSpell(BaseSpell):
         )
 
         description = re.sub(
-            r'<strong>([а-яА-ЯёЁ\s]+)</strong>',
+            r'<strong>(.+?)</strong>',
             '\n#!bold\\1\n',
             description,
         )
 
         description = re.sub(
-            r'<detail-tooltip type="[\w_]+"><a href="/[\w_]+/[\w_]+">([а-яА-ЯёЁ\[\]\w\s]+)</a></detail-tooltip>',
-            r'\1',
+            r'<em>(.+?)</em>',
+            '\n#!italic\\1\n',
             description,
         )
-        
+
 
         return description
 

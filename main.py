@@ -14,6 +14,9 @@ if __name__ == '__main__':
     
     parser.add_argument('--parser', dest='parser', choices=('lss', 'ttg_api'), default='ttg_api', type=str,
                         help='Какой парсер использовать')
+    
+    parser.add_argument('--cache_path', dest='cache_path', default='.cache', type=str,
+                        help='Путь к кэшу')
 
     args = parser.parse_args()
     if args.parser == 'lss':
@@ -21,5 +24,5 @@ if __name__ == '__main__':
     elif args.parser == 'ttg_api':
         parser_class = TTGSpell
 
-    converter = Converter(Path(args.spell_path), parser_class)
+    converter = Converter(Path(args.spell_path), parser_class, Path(args.cache_path))
     converter.create_presentation(Path(args.output_file))

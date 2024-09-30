@@ -153,6 +153,10 @@ class Card:
                     run.font.italic = True
                     run.text = run.text[len('#!stats'):]
                     run.font.size = Pt(6)
+                
+                if run.text.startswith('#!italic'):
+                    run.font.italic = True
+                    run.text = run.text[len('#!italic'):]
 
                 if run.text.startswith('#!save_throw'):
                     run.font.color.rgb = RGBColor(254, 94, 0)
