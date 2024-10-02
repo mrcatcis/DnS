@@ -17,8 +17,8 @@ from converter.spell import BaseSpell
 
 
 class Card:
-    WIDTH = Cm(6.365) 
-    HEIGHT = Cm(8.89)
+    WIDTH = Cm(6.05) 
+    HEIGHT = Cm(8.5)
     BORDER_1_SIZE = Cm(0.3)
     
     TITLE_GAP_LEFT = Cm(0.25)

@@ -32,7 +32,7 @@ class Converter:
         prs.slide_height = Cm(29.7)
         prs.slide_width = Cm(21)
         blank_slide_layout = prs.slide_layouts[6]
-        GAP = Cm(0.35)
+        GAP = Cm(0.32)
         for spell_on_slide in self.spells:
             slide = prs.slides.add_slide(blank_slide_layout)
 
